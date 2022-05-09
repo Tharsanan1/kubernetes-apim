@@ -96,7 +96,11 @@ wso2:
               xms: "1024m"
               # Maximum Heap size
               xmx: "1024m"
-
+      mysql:
+        hostname : "apim-profile-automation-database.ccndgaztcixx.us-west-1.rds.amazonaws.com"
+        username : "wso2carbon"
+        password : "wso2carbon"
+        port : "3306"
       # If the deployment configurations for the WSO2 API Manager v4.0.0 (<WSO2AM>/repository/conf/deployment.toml),
       # add the customized configuration file under (wso2 -> deployment -> am -> config -> deployment.toml)
       # config:

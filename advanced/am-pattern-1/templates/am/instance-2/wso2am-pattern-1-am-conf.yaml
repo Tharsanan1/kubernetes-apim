@@ -44,16 +44,16 @@ data:
 
     [database.apim_db]
     type = "mysql"
-    url = "jdbc:mysql://wso2am-mysql-db-service:3306/WSO2AM_DB?useSSL=false&amp;autoReconnect=true&amp;requireSSL=false&amp;verifyServerCertificate=false"
-    username = "wso2carbon"
-    password = "wso2carbon"
+    url = "jdbc:mysql://{{ .Values.wso2.deployment.am.mysql.hostname }}:{{ .Values.wso2.deployment.am.mysql.port }}/WSO2AM_DB?useSSL=false&amp;autoReconnect=true&amp;requireSSL=false&amp;verifyServerCertificate=false"
+    username = "{{ .Values.wso2.deployment.am.mysql.username }}"
+    password = "{{ .Values.wso2.deployment.am.mysql.password }}"
     driver = "com.mysql.cj.jdbc.Driver"
 
     [database.shared_db]
     type = "mysql"
-    url = "jdbc:mysql://wso2am-mysql-db-service:3306/WSO2AM_SHARED_DB?useSSL=false&amp;autoReconnect=true&amp;requireSSL=false&amp;verifyServerCertificate=false"
-    username = "wso2carbon"
-    password = "wso2carbon"
+    url = "jdbc:mysql://{{ .Values.wso2.deployment.am.mysql.hostname }}:{{ .Values.wso2.deployment.am.mysql.port }}/WSO2AM_SHARED_DB?useSSL=false&amp;autoReconnect=true&amp;requireSSL=false&amp;verifyServerCertificate=false"
+    username = "{{ .Values.wso2.deployment.am.mysql.username }}"
+    password = "{{ .Values.wso2.deployment.am.mysql.password }}"
     driver = "com.mysql.cj.jdbc.Driver"
 
     [keystore.tls]
