@@ -43,15 +43,15 @@ data:
     type = "database_unique_id"
 
     [database.apim_db]
-    type = "{{ .Values.wso2.deployment.am.db.engine }}"
+    type = "{{ .Values.wso2.deployment.am.db.type }}"
     url = "jdbc:{{ .Values.wso2.deployment.am.db.engine }}://{{ .Values.wso2.deployment.am.db.hostname }}:{{ .Values.wso2.deployment.am.db.port }}/WSO2AM_DB?useSSL=false&amp;autoReconnect=true&amp;requireSSL=false&amp;verifyServerCertificate=false"
     username = "wso2carbon"
     password = "wso2carbon"
     driver = "{{ .Values.wso2.deployment.am.db.driver }}"
 
     [database.shared_db]
-    type = "{{ .Values.wso2.deployment.am.db.engine }}"
-    url = "jdbc:{{ .Values.wso2.deployment.am.db.engine }}://{{ .Values.wso2.deployment.am.db.hostname }}:{{ .Values.wso2.deployment.am.db.port }}/WSO2AM_SHARED_DB?useSSL=false&amp;autoReconnect=true&amp;requireSSL=false&amp;verifyServerCertificate=false"
+    type = "{{ .Values.wso2.deployment.am.db.type }}"
+    url = "jdbc:{{ .Values.wso2.deployment.am.db.jdbc_protocol }}://{{ .Values.wso2.deployment.am.db.hostname }}:{{ .Values.wso2.deployment.am.db.port }}/WSO2AM_SHARED_DB?useSSL=false&amp;autoReconnect=true&amp;requireSSL=false&amp;verifyServerCertificate=false"
     username = "wso2carbon"
     password = "wso2carbon"
     driver = "{{ .Values.wso2.deployment.am.db.driver }}"
