@@ -116,7 +116,7 @@ spec:
               subPath: docker-entrypoint.sh
             {{ end }}
             {{ if .Values.wso2.deployment.dependencies.mysql }}
-            - name: mysql-connector-jar
+            - name: db-connector-jar
               mountPath: /home/wso2carbon/wso2-artifact-volume/repository/components/dropins
             {{ end }}
       serviceAccountName: {{ .Values.kubernetes.serviceAccount }}
@@ -144,6 +144,6 @@ spec:
             defaultMode: 0407
         {{ end }}
         {{ if .Values.wso2.deployment.dependencies.mysql }}
-        - name: mysql-connector-jar
+        - name: db-connector-jar
           emptyDir: {}
         {{ end }}
