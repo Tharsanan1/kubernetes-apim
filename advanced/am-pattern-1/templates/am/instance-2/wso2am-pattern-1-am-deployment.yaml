@@ -47,7 +47,7 @@ spec:
             - |
               set -e
               connector_version=8.0.17
-              wget https://repo1.maven.org/maven2/mysql/mysql-connector-java/${connector_version}/mysql-connector-java-${connector_version}.jar -P /db-connector-jar/
+              wget "{{ .Values.wso2.deployment.am.db.driver_url }}" -P /db-connector-jar/
           volumeMounts:
             - name: db-connector-jar
               mountPath: /db-connector-jar
