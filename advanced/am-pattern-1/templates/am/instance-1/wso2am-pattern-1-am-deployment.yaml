@@ -115,19 +115,19 @@ spec:
               mountPath: /home/wso2carbon/docker-entrypoint.sh
               subPath: docker-entrypoint.sh
             {{ end }}
-            {{ if .Values.wso2.deployment.dependencies.db eq "mysql" }}
+            {{ if eq .Values.wso2.deployment.dependencies.db "mysql" }}
             - name: db-connector-jar
               mountPath: /home/wso2carbon/wso2-artifact-volume/repository/components/dropins
             {{ end }}
-            {{ if .Values.wso2.deployment.dependencies.db eq "postgres" }}
+            {{ if eq .Values.wso2.deployment.dependencies.db "postgres" }}
             - name: db-connector-jar
               mountPath: /home/wso2carbon/wso2-artifact-volume/repository/components/dropins
             {{ end }}
-            {{ if .Values.wso2.deployment.dependencies.db eq "mssql" }}
+            {{ if eq .Values.wso2.deployment.dependencies.db "mssql" }}
             - name: db-connector-jar
               mountPath: /home/wso2carbon/wso2am-4.1.0/lib
             {{ end }}
-            {{ if .Values.wso2.deployment.dependencies.db eq "oracle" }}
+            {{ if eq .Values.wso2.deployment.dependencies.db "oracle" }}
             - name: db-connector-jar
               mountPath: /home/wso2carbon/wso2am-4.1.0/lib
             {{ end }}
