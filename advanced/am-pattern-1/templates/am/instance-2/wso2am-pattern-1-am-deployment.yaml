@@ -35,7 +35,7 @@ spec:
         dev: passed
     spec:
       initContainers:
-        {{ if .Values.wso2.deployment.dependencies.mysql }}
+        {{ if .Values.wso2.deployment.dependencies.db }}
         - name: init-db
           image: busybox:1.32
           command: ['sh', '-c', 'echo -e "Checking for the availability of DB Server deployment"; while ! nc -z "{{ .Values.wso2.deployment.am.db.hostname }}" {{ .Values.wso2.deployment.am.db.port }}; do sleep 1; printf "-"; done; echo -e "  >> DB Server has started";']
@@ -115,9 +115,21 @@ spec:
               mountPath: /home/wso2carbon/docker-entrypoint.sh
               subPath: docker-entrypoint.sh
             {{ end }}
-            {{ if .Values.wso2.deployment.dependencies.mysql }}
+            {{ if eq .Values.wso2.deployment.dependencies.db "mysql" }}
             - name: db-connector-jar
               mountPath: /home/wso2carbon/wso2-artifact-volume/repository/components/dropins
+            {{ end }}
+            {{ if eq .Values.wso2.deployment.dependencies.db "postgres" }}
+            - name: db-connector-jar
+              mountPath: /home/wso2carbon/wso2-artifact-volume/repository/components/dropins
+            {{ end }}
+            {{ if eq .Values.wso2.deployment.dependencies.db "mssql" }}
+            - name: db-connector-jar
+              mountPath: /home/wso2carbon/wso2am-4.1.0/lib
+            {{ end }}
+            {{ if eq .Values.wso2.deployment.dependencies.db "oracle" }}
+            - name: db-connector-jar
+              mountPath: /home/wso2carbon/wso2am-4.1.0/lib
             {{ end }}
       serviceAccountName: {{ .Values.kubernetes.serviceAccount }}
       {{- if .Values.wso2.deployment.am.imagePullSecrets }}
@@ -143,7 +155,7 @@ spec:
             name: {{ template "am-pattern-1.resource.prefix" . }}-am-conf-entrypoint
             defaultMode: 0407
         {{ end }}
-        {{ if .Values.wso2.deployment.dependencies.mysql }}
+        {{ if .Values.wso2.deployment.dependencies.db }}
         - name: db-connector-jar
           emptyDir: {}
         {{ end }}
