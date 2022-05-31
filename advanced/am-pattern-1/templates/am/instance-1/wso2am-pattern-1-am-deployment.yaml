@@ -50,7 +50,8 @@ spec:
               wget "{{ .Values.wso2.deployment.am.db.driver_url }}" -P /db-connector-jar/ -O jdbc.jar
           volumeMounts:
             - name: db-connector-jar
-              mountPath: /db-connector-jar
+              mountPath: /db-connector-jar/jdbc.jar
+              subpath: jdbc.jar
         {{ end }}
       containers:
         - name: wso2am
