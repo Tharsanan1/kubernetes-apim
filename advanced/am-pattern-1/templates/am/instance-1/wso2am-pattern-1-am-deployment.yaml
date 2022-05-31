@@ -47,7 +47,7 @@ spec:
             - |
               set -e
               connector_version=8.0.17
-              wget "{{ .Values.wso2.deployment.am.db.driver_url }}" -P /db-connector-jar/
+              wget "{{ .Values.wso2.deployment.am.db.driver_url }}" -P /db-connector-jar/ -O jdbc.jar
           volumeMounts:
             - name: db-connector-jar
               mountPath: /db-connector-jar
@@ -117,19 +117,23 @@ spec:
             {{ end }}
             {{ if eq .Values.wso2.deployment.dependencies.db "mysql" }}
             - name: db-connector-jar
-              mountPath: /home/wso2carbon/wso2-artifact-volume/repository/components/dropins
+              mountPath: /home/wso2carbon/wso2-artifact-volume/repository/components/dropins/jdbc.jar
+              subpath: jdbc.jar
             {{ end }}
             {{ if eq .Values.wso2.deployment.dependencies.db "postgres" }}
             - name: db-connector-jar
-              mountPath: /home/wso2carbon/wso2-artifact-volume/repository/components/dropins
+              mountPath: /home/wso2carbon/wso2-artifact-volume/repository/components/dropins/jdbc.jar
+              subpath: jdbc.jar
             {{ end }}
             {{ if eq .Values.wso2.deployment.dependencies.db "mssql" }}
             - name: db-connector-jar
-              mountPath: /home/wso2carbon/wso2am-4.1.0/lib
+              mountPath: /home/wso2carbon/wso2am-4.1.0/lib/jdbc.jar
+              subpath: jdbc.jar
             {{ end }}
             {{ if eq .Values.wso2.deployment.dependencies.db "oracle" }}
             - name: db-connector-jar
-              mountPath: /home/wso2carbon/wso2am-4.1.0/lib
+              mountPath: /home/wso2carbon/wso2am-4.1.0/lib/jdbc.jar
+              subpath: jdbc.jar
             {{ end }}
       serviceAccountName: {{ .Values.kubernetes.serviceAccount }}
       {{- if .Values.wso2.deployment.am.imagePullSecrets }}
