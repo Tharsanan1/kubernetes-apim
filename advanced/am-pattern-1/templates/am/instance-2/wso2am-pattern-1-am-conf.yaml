@@ -44,16 +44,16 @@ data:
 
     [database.apim_db]
     type = "{{ .Values.wso2.deployment.am.db.type }}"
-    url = "jdbc:{{ .Values.wso2.deployment.am.db.jdbc_protocol }}://{{ .Values.wso2.deployment.am.db.hostname }}:{{ .Values.wso2.deployment.am.db.port }}/WSO2AM_DB?useSSL=false&amp;autoReconnect=true&amp;requireSSL=false&amp;verifyServerCertificate=false"
-    username = "wso2carbon"
-    password = "wso2carbon"
+    url = "{{ .Values.wso2.deployment.am.db.apim.url }}"
+    username = "{{ .Values.wso2.deployment.am.db.apim.username }}"
+    password = "{{ .Values.wso2.deployment.am.db.apim.password }}"
     driver = "{{ .Values.wso2.deployment.am.db.driver }}"
 
     [database.shared_db]
     type = "{{ .Values.wso2.deployment.am.db.type }}"
-    url = "jdbc:{{ .Values.wso2.deployment.am.db.jdbc_protocol }}://{{ .Values.wso2.deployment.am.db.hostname }}:{{ .Values.wso2.deployment.am.db.port }}/WSO2AM_SHARED_DB?useSSL=false&amp;autoReconnect=true&amp;requireSSL=false&amp;verifyServerCertificate=false"
-    username = "wso2carbon"
-    password = "wso2carbon"
+    url = "{{ .Values.wso2.deployment.am.db.apim_shared.url }}"
+    username = "{{ .Values.wso2.deployment.am.db.apim_shared.username }}"
+    password = "{{ .Values.wso2.deployment.am.db.apim_shared.password }}"
     driver = "{{ .Values.wso2.deployment.am.db.driver }}"
 
     [keystore.tls]
