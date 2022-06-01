@@ -117,7 +117,7 @@ spec:
             {{ end }}
             {{ if .Values.wso2.deployment.dependencies.db}}
             - name: db-connector-jar
-              mountPath: /home/wso2carbon/wso2-artifact-volume/lib
+              mountPath: /home/wso2carbon/wso2-artifact-volume/repository/components/lib
             {{ end }}
       serviceAccountName: {{ .Values.kubernetes.serviceAccount }}
       {{- if .Values.wso2.deployment.am.imagePullSecrets }}
